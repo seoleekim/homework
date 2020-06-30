@@ -1,0 +1,504 @@
+import java.awt.BorderLayout;
+import java.awt.Container;
+import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.ScrollPaneConstants;
+
+
+class Info {
+	String name5[];
+	String name6[];
+	String name7[];
+	String name8[];
+	String name9[];
+	String name10[];
+	String name11[];
+	String name12[];
+	String place5[];
+	String place6[];
+	String place7[];
+	String place8[];
+	String place9[];
+	String place10[];
+	String place11[];
+	String place12[];
+	String period5[];
+	String period6[];
+	String period7[];
+	String period8[];
+	String period9[];
+	String period10[];
+	String period11[];
+	String period12[];
+	String image5[];
+	String image6[];
+	String image7[];
+	String image8[];
+	String image9[];
+	String image10[];
+	String image11[];
+	String image12[];
+}
+
+public class A {
+	public A() throws Exception {
+		Info data[] = new Info[10];
+		Image image1 = null;
+		String[] name5 = new String[5000];
+		String[] name6 = new String[5000];
+		String[] name7 = new String[5000];
+		String[] name8 = new String[5000];
+		String[] name9 = new String[5000];
+		String[] name10 = new String[5000];
+		String[] name11 = new String[5000];
+		String[] name12 = new String[5000];
+		String[] place5 = new String[5000];
+		String[] place6 = new String[5000];
+		String[] place7 = new String[5000];
+		String[] place8 = new String[5000];
+		String[] place9 = new String[5000];
+		String[] place10 = new String[5000];
+		String[] place11 = new String[5000];
+		String[] place12 = new String[5000];
+		String[] period5 = new String[5000];
+		String[] period6 = new String[5000];
+		String[] period7 = new String[5000];
+		String[] period8 = new String[5000];
+		String[] period9 = new String[5000];
+		String[] period10 = new String[5000];
+		String[] period11 = new String[5000];
+		String[] period12 = new String[5000];
+		String[] image5 = new String[5000];
+		String[] image6 = new String[5000];
+		String[] image7 = new String[5000];
+		String[] image8 = new String[5000];
+		String[] image9 = new String[5000];
+		String[] image10 = new String[5000];
+		String[] image11 = new String[5000];
+		String[] image12 = new String[5000];
+		String gyeonggi = "http://ticket.interpark.com/TiKi/Special/TPRegionReserve.asp?Region=42010&RegionName=%B0%E6%B1%E2";
+		String gangwon = "http://ticket.interpark.com/TiKi/Special/TPRegionReserve.asp?Region=42080&RegionName=%B0%AD%BF%F8";
+		String chungnam = "http://ticket.interpark.com/TiKi/Special/TPRegionReserve.asp?Region=42060&RegionName=%C3%E6%B3%B2";
+		String chungbuk = "http://ticket.interpark.com/TiKi/Special/TPRegionReserve.asp?Region=42070&RegionName=%C3%E6%BA%CF";
+		String jeonnam = "http://ticket.interpark.com/TiKi/Special/TPRegionReserve.asp?Region=42040&RegionName=%C0%FC%B3%B2";
+		String jeonbuk = "http://ticket.interpark.com/TiKi/Special/TPRegionReserve.asp?Region=42050&RegionName=%C0%FC%BA%CF";
+		String gyeongnam = "http://ticket.interpark.com/TiKi/Special/TPRegionReserve.asp?Region=42020&RegionName=%B0%E6%B3%B2";
+		String gyeongbuk = "http://ticket.interpark.com/TiKi/Special/TPRegionReserve.asp?Region=42030&RegionName=%B0%E6%BA%CF";
+		String temp2;
+		HttpURLConnection con = (HttpURLConnection) new URL(gyeonggi)
+				.openConnection();
+		BufferedReader br = new BufferedReader(new InputStreamReader(
+				con.getInputStream()));
+		int j = 0;
+		while ((temp2 = br.readLine()) != null) {
+			if (temp2.contains("onError")) {
+				image5[j] = (temp2.split("src=")[1].split("width")[0]);
+			}
+			if (temp2.contains("GoodsCode") && temp2.contains("</p")) {
+				name5[j] = (temp2.split(">")[1].split("<")[0]);
+			}
+			if (temp2.contains("PlaceGo")) {
+				place5[j] = temp2.split(">")[1].split("<")[0];
+			}
+			if (temp2.contains("\"date\"")) {
+				period5[j] = temp2.split(">")[1].split("<")[0];
+				j++;
+			}
+		}
+		HttpURLConnection con2 = (HttpURLConnection) new URL(gangwon)
+				.openConnection();
+		BufferedReader br2 = new BufferedReader(new InputStreamReader(
+				con2.getInputStream()));
+		int k = 0;
+		while ((temp2 = br2.readLine()) != null) {
+			if (temp2.contains("onError")) {
+				image6[k] = (temp2.split("src=")[1].split("width")[0]);
+			}
+			if (temp2.contains("GoodsCode") && temp2.contains("</p")) {
+				name6[k] = (temp2.split(">")[1].split("<")[0]);
+			}
+			if (temp2.contains("PlaceGo")) {
+				place6[k] = temp2.split(">")[1].split("<")[0];
+			}
+			if (temp2.contains("\"date\"")) {
+				period6[k] = temp2.split(">")[1].split("<")[0];
+				k++;
+			}
+		}
+
+		HttpURLConnection con3 = (HttpURLConnection) new URL(chungnam)
+				.openConnection();
+		BufferedReader br3 = new BufferedReader(new InputStreamReader(
+				con3.getInputStream()));
+		int a = 0;
+		while ((temp2 = br3.readLine()) != null) {
+			if (temp2.contains("onError")) {
+				image7[a] = (temp2.split("src=")[1].split("width")[0]);
+			}
+			if (temp2.contains("GoodsCode") && temp2.contains("</p")) {
+				name7[a] = (temp2.split(">")[1].split("<")[0]);
+			}
+			if (temp2.contains("PlaceGo")) {
+				place7[a] = temp2.split(">")[1].split("<")[0];
+			}
+			if (temp2.contains("\"date\"")) {
+				period7[a] = temp2.split(">")[1].split("<")[0];
+				a++;
+			}
+		}
+
+		HttpURLConnection con4 = (HttpURLConnection) new URL(chungbuk)
+				.openConnection();
+		BufferedReader br4 = new BufferedReader(new InputStreamReader(
+				con4.getInputStream()));
+		int b = 0;
+		while ((temp2 = br4.readLine()) != null) {
+			if (temp2.contains("onError")) {
+				image8[b] = (temp2.split("src=")[1].split("width")[0]);
+			}
+			if (temp2.contains("GoodsCode") && temp2.contains("</p")) {
+				name8[b] = (temp2.split(">")[1].split("<")[0]);
+			}
+			if (temp2.contains("PlaceGo")) {
+				place8[b] = temp2.split(">")[1].split("<")[0];
+			}
+			if (temp2.contains("\"date\"")) {
+				period8[b] = temp2.split(">")[1].split("<")[0];
+				b++;
+			}
+		}
+		HttpURLConnection con8 = (HttpURLConnection) new URL(jeonnam)
+				.openConnection();
+		BufferedReader br8 = new BufferedReader(new InputStreamReader(
+				con8.getInputStream()));
+		int g = 0;
+		while ((temp2 = br8.readLine()) != null) {
+			if (temp2.contains("onError")) {
+				image9[g] = (temp2.split("src=")[1].split("width")[0]);
+			}
+			if (temp2.contains("GoodsCode") && temp2.contains("</p")) {
+				name9[g] = (temp2.split(">")[1].split("<")[0]);
+			}
+			if (temp2.contains("PlaceGo")) {
+				place9[g] = temp2.split(">")[1].split("<")[0];
+			}
+			if (temp2.contains("\"date\"")) {
+				period9[g] = temp2.split(">")[1].split("<")[0];
+				g++;
+			}
+		}
+		HttpURLConnection con7 = (HttpURLConnection) new URL(jeonbuk)
+				.openConnection();
+		BufferedReader br7 = new BufferedReader(new InputStreamReader(
+				con7.getInputStream()));
+		int f = 0;
+		while ((temp2 = br7.readLine()) != null) {
+			if (temp2.contains("onError")) {
+				image10[f] = (temp2.split("src=")[1].split("width")[0]);
+			}
+			if (temp2.contains("GoodsCode") && temp2.contains("</p")) {
+				name10[f] = (temp2.split(">")[1].split("<")[0]);
+			}
+			if (temp2.contains("PlaceGo")) {
+				place10[f] = temp2.split(">")[1].split("<")[0];
+			}
+			if (temp2.contains("\"date\"")) {
+				period10[f] = temp2.split(">")[1].split("<")[0];
+	f++;
+			}
+		}
+		HttpURLConnection con5 = (HttpURLConnection) new URL(gyeongnam)
+				.openConnection();
+		BufferedReader br5 = new BufferedReader(new InputStreamReader(
+				con5.getInputStream()));
+		int c = 0;
+		while ((temp2 = br5.readLine()) != null) {
+			if (temp2.contains("onError")) {
+				image11[c] = (temp2.split("src=")[1].split("width")[0]);
+			}
+			if (temp2.contains("GoodsCode") && temp2.contains("</p")) {
+				name11[c] = (temp2.split(">")[1].split("<")[0]);
+			}
+			if (temp2.contains("PlaceGo")) {
+				place11[c] = temp2.split(">")[1].split("<")[0];
+			}
+			if (temp2.contains("\"date\"")) {
+				period11[c] = temp2.split(">")[1].split("<")[0];
+				c++;
+			}
+		}
+		HttpURLConnection con6 = (HttpURLConnection) new URL(gyeongbuk)
+				.openConnection();
+		BufferedReader br6 = new BufferedReader(new InputStreamReader(
+				con6.getInputStream()));
+		int d = 0;
+		while ((temp2 = br6.readLine()) != null) {
+			if (temp2.contains("onError")) {
+				image12[d] = (temp2.split("src=")[1].split("width")[0]);
+			}
+			if (temp2.contains("GoodsCode") && temp2.contains("</p")) {
+				name12[d] = (temp2.split(">")[1].split("<")[0]);
+			}
+			if (temp2.contains("PlaceGo")) {
+				place12[d] = temp2.split(">")[1].split("<")[0];
+			}
+			if (temp2.contains("\"date\"")) {
+				period12[d] = temp2.split(">")[1].split("<")[0];
+				d++;
+			}
+		}
+
+		try {
+			URL url = new URL(
+					"http://ticketimage.interpark.com/Play/image/small/20/20003435.gif");
+			image1 = ImageIO.read(url);
+		} catch (IOException e) {
+
+		}
+		con.disconnect();
+		br.close();
+
+		JFrame frame = new JFrame("문화알리미");
+		JPanel panel = new JPanel();
+		JButton btn1 = new JButton("문화 검색");
+		JButton btn2 = new JButton("위치 검색");
+		JButton btn3 = new JButton("도움말");
+		JButton btn4 = new JButton("종료");
+		JButton btn5 = new JButton("경기도");
+		JButton btn6 = new JButton("강원도");
+		JButton btn7 = new JButton("충청남도");
+		JButton btn8 = new JButton("충청북도");
+		JButton btn9 = new JButton("전라남도");
+		JButton btn10 = new JButton("전라북도");
+		JButton btn11= new JButton("경상남도");
+		JButton btn12 = new JButton("경상북도");
+		 
+		JTextArea t = new JTextArea(40,55);
+		JScrollPane scroll = new JScrollPane(t);
+	    scroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
+        scroll.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        panel.add(scroll);
+        ImageIcon image = new ImageIcon("image/help.png");
+        JLabel label = new JLabel(image);
+        panel.add(label);
+        label.setVisible(false);
+        frame.getContentPane().add(BorderLayout.CENTER,panel);
+        frame.setResizable(false);
+        frame.setLocation(400,150);
+       
+		
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(1000, 800);
+        frame.setVisible(true);
+        panel.setLayout(null);
+        panel.add(btn1);
+        panel.add(btn2);
+        panel.add(btn3);
+        panel.add(btn4);
+        panel.add(btn5);
+        panel.add(btn6);
+        panel.add(btn7);
+        panel.add(btn8);
+        panel.add(btn9);
+        panel.add(btn10);
+        panel.add(btn11);
+        panel.add(btn12);
+
+		btn1.setBounds(10, 10, 150, 150);
+		btn2.setBounds(10,170,150,150);
+		btn3.setBounds(10, 330, 150, 150);
+		btn4.setBounds(10, 490, 150, 150);
+		btn5.setBounds(820, 10, 150, 50);
+		btn6.setBounds(820, 70, 150, 50);
+		btn7.setBounds(820, 130, 150, 50);
+		btn8.setBounds(820, 190, 150, 50);
+		btn9.setBounds(820, 250, 150, 50);
+		btn10.setBounds(820, 310, 150, 50);
+		btn11.setBounds(820, 370, 150, 50);
+		btn12.setBounds(820, 430, 150, 50);
+
+		btn5.setVisible(false);
+		btn6.setVisible(false);
+		btn7.setVisible(false);
+		btn8.setVisible(false);
+		btn9.setVisible(false);
+		btn10.setVisible(false);
+		btn11.setVisible(false);
+		btn12.setVisible(false);
+
+		btn1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				btn5.setVisible(true);
+				btn6.setVisible(true);
+				btn7.setVisible(true);
+				btn8.setVisible(true);
+				btn9.setVisible(true);
+				btn10.setVisible(true);
+				btn11.setVisible(true);
+				btn12.setVisible(true);
+
+				t.setText(null);
+				
+			}
+		});
+		btn2.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				btn5.setVisible(false);
+				btn6.setVisible(false);
+				btn7.setVisible(false);
+				btn8.setVisible(false);
+				btn9.setVisible(false);
+				btn10.setVisible(false);
+				btn11.setVisible(false);
+				btn12.setVisible(false);
+				// TODO Auto-generated method stub
+				new Main();
+			}
+		});
+		btn3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			label.setVisible(true);	
+			}
+		});
+		btn4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			System.exit(0);
+			}
+		});
+		btn5.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				t.setText(null);
+				for(int k=0;k<202;k++){
+				t.append("이름 : " + name5[k] + "\n");
+				t.append("장소 : " + place5[k] + "\n");
+				t.append("기간 : " + period5[k] + "\n");
+				t.append("--------------------------------------------------------------------------------\n");
+				}
+			}
+		});
+		btn6.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				t.setText(null);
+				for(int k=0;k<31;k++){
+				t.append("이름 : " + name6[k] + "\n");
+				t.append("장소 : " + place6[k] + "\n");
+				t.append("기간 : " + period6[k] + "\n");
+				t.append("--------------------------------------------------------------------------------\n");
+				}
+			}
+		});
+		btn7.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				t.setText(null);
+				for(int k=0;k<53;k++){
+				t.append("이름 : " + name7[k] + "\n");
+				t.append("장소 : " + place7[k] + "\n");
+				t.append("기간 : " + period7[k] + "\n");
+				t.append("--------------------------------------------------------------------------------\n");
+				}
+			}
+		});
+		btn8.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				t.setText(null);
+				for(int k=0;k<15;k++){
+				t.append("이름 : " + name8[k] + "\n");
+				t.append("장소 : " + place8[k] + "\n");
+				t.append("기간 : " + period8[k] + "\n");
+				t.append("--------------------------------------------------------------------------------\n");
+				}
+			}
+		});
+		btn9.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				t.setText(null);
+				for(int k=0;k<41;k++){
+				t.append("이름 : " + name9[k] + "\n");
+				t.append("장소 : " + place9[k] + "\n");
+				t.append("기간 : " + period9[k] + "\n");
+				t.append("--------------------------------------------------------------------------------\n");
+				}
+			}
+		});
+		btn10.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				t.setText(null);
+				for(int k=0;k<39;k++){
+				t.append("이름 : " + name10[k] + "\n");
+				t.append("장소 : " + place10[k] + "\n");
+				t.append("기간 : " + period10[k] + "\n");
+				t.append("--------------------------------------------------------------------------------\n");
+				}
+			}
+		});
+		btn11.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				t.setText(null);
+				for(int k=0;k<120;k++){
+				t.append("이름 : " + name11[k] + "\n");
+				t.append("장소 : " + place11[k] + "\n");
+				t.append("기간 : " + period11[k] + "\n");
+				t.append("--------------------------------------------------------------------------------\n");
+				}
+			}
+		});
+		btn12.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				t.setText(null);
+				for(int k=0;k<81;k++){
+				t.append("이름 : " + name12[k] + "\n");
+				t.append("장소 : " + place12[k] + "\n");
+				t.append("기간 : " + period12[k] + "\n");
+				t.append("--------------------------------------------------------------------------------\n");
+				}
+			}
+		});
+		
+		/*JLabel lable = new JLabel(new ImageIcon(image1));
+		lable.setVisible(false);
+		frame.add(lable);
+		lable.setBounds(350, 50, 100, 100);
+		frame.add(btn1);
+		frame.add(btn2);
+		frame.add(btn3);
+		frame.add(btn4);
+
+		frame.add(t);
+		frame.add(scroll);
+		t.setBounds(200, 10, 750,700);	
+		frame.setLayout(null);
+		btn1.setBounds(10, 10, 150, 150);
+		btn2.setBounds(10,170,150,150);
+		btn3.setBounds(10,330,150,150);
+		btn4.setBounds(10,490,150,150);
+
+		
+		frame.setVisible(true);
+		frame.setSize(1000, 800);
+		frame.setLocationRelativeTo(null);
+		frame.setResizable(false);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);*/
+}
+
+	public static void main(String[] args) throws Exception  {
+		new A();
+	}
+}
+
