@@ -1,0 +1,73 @@
+import java.awt.*;
+import java.awt.event.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.URL;
+import java.net.URLEncoder;
+
+
+import java.io.FileWriter;
+
+import javax.swing.JButton;
+
+public class sa {
+	
+	
+
+	public static void main(String[]args) {
+		
+		JFrame f = new JFrame();
+		f.setVisible(true);
+		f.setSize(1000,500);
+		f.setTitle("문화정보 알리미");
+		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        JLabel label = new JLabel();
+        label.setBounds(180,0,18000,100);
+        f.add(label);
+		
+		
+		JButton b1 = new JButton("주변 문화시설 찾기");
+		f.add(b1);
+
+		JButton b2 = new JButton("문화검색");
+		f.add(b2);
+					
+	
+		JButton b3 = new JButton("도움말");
+		f.add(b3);
+		b3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				label.setText("주변 문화시설 찾기를 클릭하면 주변");
+				
+			}
+		});
+		JButton b4 = new JButton("종료");
+		f.add(b4);
+		b4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.exit(0);
+				
+			}
+		});
+
+		f.setLayout(null);
+		
+		b1.setBounds(10, 10, 150,100);
+		b2.setBounds(10, 110, 150, 100);
+		b3.setBounds(10, 210, 150, 100);
+		b4.setBounds(10, 310, 150, 100);
+	}
+}
