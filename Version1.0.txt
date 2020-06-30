@@ -1,0 +1,68 @@
+package parsing;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.Scanner;
+public class Main {
+	static String temp;
+	static String temp2;
+
+	
+	public static void main(String[] args)throws Exception  {
+		Scanner scan = new Scanner (System.in);
+		int i= scan.nextInt();
+		region(i);
+	}
+
+	
+	static void region(int arr)throws Exception {
+		
+		String chungnam = "http://ticket.interpark.com/TiKi/Special/TPRegionReserve.asp?Region=42060&RegionName=%C3%E6%B3%B2";
+		String chungbuk = "http://ticket.interpark.com/TiKi/Special/TPRegionReserve.asp?Region=42070&RegionName=%C3%E6%BA%CF";
+		String gyengnam = "http://ticket.interpark.com/TiKi/Special/TPRegionReserve.asp?Region=42020&RegionName=%B0%E6%B3%B2";
+		String gyengbuk = "http://ticket.interpark.com/TiKi/Special/TPRegionReserve.asp?Region=42030&RegionName=%B0%E6%BA%CF";
+		switch(arr){
+		case 1:
+			temp = chungnam;
+			break;
+		case 2:
+			temp = chungbuk;
+			break;
+		case 3:
+			temp = gyengnam;
+			break;
+		case 4:
+			temp = gyengbuk;
+			break;
+		default:
+			return;
+		}
+		
+		HttpURLConnection con = (HttpURLConnection) new URL(temp)
+		.openConnection();
+		BufferedReader br = new BufferedReader(new InputStreamReader(
+				con.getInputStream()));
+		
+		while ((temp2 = br.readLine()) != null) {
+			if (temp2.contains("GoodsCode") && temp2.contains("</p")) {
+				System.out.print("이름 : ");
+				System.out.println(temp2.split(">")[1].split("<")[0]);
+			}
+			if (temp2.contains("PlaceGo")) {
+				System.out.print("장소 : ");
+				System.out.println(temp2.split(">")[1].split("<")[0]);
+				
+			}
+			if(temp2.contains("\"date\"")){
+				System.out.print("기간 : ");
+				System.out.println(temp2.split(">")[1].split("<")[0]);
+				System.out.println("");
+			}
+			
+		}
+		con.disconnect();
+		br.close();
+	}
+
+	}
